@@ -71,8 +71,9 @@ internal sealed class PayloadInstaller
             File.Copy(_paths.ConfigPath, backup, overwrite: true);
         }
 
-        var configResource = _resources.FirstOrDefault(
-            name => name.Equals("Payload/defaults/config.ini", StringComparison.Ordinal));
+        var configResource = _resources.FirstOrDefault(name =>
+            NormalizeResourcePath(name)
+                .Equals("defaults/config.ini", StringComparison.Ordinal));
 
         if (configResource is null)
             throw new InvalidOperationException("No se encontró la configuración predeterminada embebida.");
@@ -82,7 +83,7 @@ internal sealed class PayloadInstaller
 
     private void InstallResource(string resourceName, bool overwriteDefaults)
     {
-        var relative = resourceName[ResourcePrefix.Length..]
+        var relative = NormalizeResourcePath(resourceName)
             .Replace('/', Path.DirectorySeparatorChar);
 
         if (relative.StartsWith($"defaults{Path.DirectorySeparatorChar}", StringComparison.Ordinal))
@@ -135,6 +136,15 @@ internal sealed class PayloadInstaller
         }
 
         File.Move(temporaryPath, destinationPath, overwrite: true);
+    }
+
+    private static string NormalizeResourcePath(string resourceName)
+    {
+        var relative = resourceName.StartsWith(ResourcePrefix, StringComparison.Ordinal)
+            ? resourceName[ResourcePrefix.Length..]
+            : resourceName;
+
+        return relative.Replace('\\', '/');
     }
 
     private string ComputeFingerprint()
