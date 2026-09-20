@@ -1,0 +1,6 @@
+2026/09/12 19:37:38.728: An exception may have occurred, the currently selected connection is inconsistent with the expected connection. The connection has been retrieved. (1 times has been reinitialized)
+2026/09/14 16:19:02.716: An exception may have occurred, the currently selected connection is inconsistent with the expected connection. The connection has been retrieved. (1 times has been reinitialized)
+2026/09/14 16:20:44.900: An exception may have occurred, the currently selected connection is inconsistent with the expected connection. The connection has been retrieved. (2 times has been reinitialized)
+2026/09/17 00:37:21.398: An exception may have occurred, the currently selected connection is inconsistent with the expected connection. The connection has been retrieved. (1 times has been reinitialized)
+2026/09/19 23:34:26.500: Notice: All devices will be recreated. This message is sent by the function on the next line:
+2026/09/19 23:34:26.501: void __cdecl CTaskBarDlgDrawCommonSupport::RecreateAll(void)
