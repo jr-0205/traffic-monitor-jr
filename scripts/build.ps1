@@ -20,6 +20,10 @@ dotnet publish $project `
     -p:IncludeNativeLibrariesForSelfExtract=true `
     -o $output
 
+if ($LASTEXITCODE -ne 0) {
+    throw "dotnet publish falló con código de salida $LASTEXITCODE."
+}
+
 $exe = Join-Path $output 'TrafficMonitorJr.exe'
 if (-not (Test-Path $exe)) {
     throw 'No se generó TrafficMonitorJr.exe.'
