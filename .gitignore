@@ -1,0 +1,9 @@
+# Runtime / local state
+backups/
+error.log
+*.dmp
+*.tmp
+
+# Local traffic history
+history_traffic.dat
+history_traffic.dat.bak

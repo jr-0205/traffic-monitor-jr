@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <skin>
+    <text_color>16764828,16758654,16249066,16249066,16249066,13747384,13747384,13747384,13747384,16249066</text_color>
+    <specify_each_item_color>1</specify_each_item_color>
+    <skin_author>JR</skin_author>
+    <font name="Segoe UI" size="10" style="0"/>
+    <display_text>
+      <up>SUB </up>
+      <down>BAJ </down>
+      <total_speed>RED </total_speed>
+      <cpu>CPU </cpu>
+      <memory>RAM </memory>
+      <gpu>GPU </gpu>
+      <cpu_temperature>CPU° </cpu_temperature>
+      <gpu_temperature>GPU° </gpu_temperature>
+      <hdd_temperature>SSD° </hdd_temperature>
+      <main_board_temperature>MB° </main_board_temperature>
+      <hdd>DISCO </hdd>
+    </display_text>
+  </skin>
+  <layout text_height="20" no_label="0">
+    <layout_l width="288" height="108">
+      <cpu x="14" y="7" width="82" align="0" show="1"/>
+      <memory x="103" y="7" width="82" align="0" show="1"/>
+      <gpu x="192" y="7" width="82" align="0" show="1"/>
+      <up x="14" y="39" width="125" align="0" show="1"/>
+      <down x="149" y="39" width="125" align="0" show="1"/>
+      <hdd x="14" y="72" width="125" align="0" show="1"/>
+      <total_speed x="149" y="72" width="125" align="0" show="1"/>
+    </layout_l>
+    <layout_s width="288" height="52">
+      <up x="14" y="16" width="125" align="0" show="1"/>
+      <down x="149" y="16" width="125" align="0" show="1"/>
+    </layout_s>
+  </layout>
+  <preview width="304" height="178">
+    <l x="8" y="4"/>
+    <s x="8" y="120"/>
+  </preview>
+</root>
