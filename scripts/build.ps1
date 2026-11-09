@@ -1,12 +1,24 @@
 param(
     [ValidateSet('Debug', 'Release')]
-    [string]$Configuration = 'Release'
+    [string]$Configuration = 'Release',
+    [switch]$SkipPlugin
 )
 
 $ErrorActionPreference = 'Stop'
 $repoRoot = Split-Path -Parent $PSScriptRoot
 $project = Join-Path $repoRoot 'src\TrafficMonitorJr.App\TrafficMonitorJr.App.csproj'
 $output = Join-Path $repoRoot 'artifacts\win-x64'
+
+$pluginScript = Join-Path $PSScriptRoot 'build-plugin.ps1'
+$pluginDll = Join-Path $repoRoot 'payload\runtime\plugins\TrafficMonitorJrIp.dll'
+
+if ($SkipPlugin) {
+    if (Test-Path $pluginDll) {
+        Remove-Item $pluginDll -Force
+    }
+} else {
+    & $pluginScript -Configuration $Configuration
+}
 
 if (Test-Path $output) {
     Remove-Item $output -Recurse -Force

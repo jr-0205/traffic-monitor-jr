@@ -10,6 +10,7 @@
 
 # Build artifacts
 artifacts/
+payload/runtime/plugins/
 
 # Runtime/user state
 backups/

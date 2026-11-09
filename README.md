@@ -17,6 +17,7 @@ No hace falta entregar junto a él DLL, skins, idiomas, archivos INI ni scripts.
 - Skin **JR Modern**.
 - Interfaz compacta en español.
 - Selección automática de red sin fijar un adaptador antiguo.
+- Dirección IPv4 de la tarjeta de red seleccionada en la barra de tareas (plugin nativo incluido).
 - Migración automática desde la versión portátil anterior.
 - Configuración persistente entre actualizaciones.
 - Reparación del runtime sin perder configuración.
@@ -29,14 +30,16 @@ No hace falta entregar junto a él DLL, skins, idiomas, archivos INI ni scripts.
 ```text
 .
 ├─ src/
-│  └─ TrafficMonitorJr.App/      # launcher y lógica propia
+│  ├─ TrafficMonitorJr.App/      # launcher y lógica propia
+│  └─ TrafficMonitorJr.IpPlugin/ # plugin nativo C++ (IPv4 en la barra)
 ├─ payload/
 │  ├─ runtime/                   # TrafficMonitor y dependencias
 │  ├─ defaults/                  # configuración inicial
 │  ├─ language/                  # idiomas
 │  └─ skins/                     # skins, incluido JR Modern
 ├─ scripts/
-│  └─ build.ps1                  # publicación local
+│  ├─ build.ps1                  # publicación local
+│  └─ build-plugin.ps1           # compilación del plugin (MSVC)
 ├─ docs/
 │  └─ ARCHITECTURE.md
 └─ .github/workflows/
@@ -45,10 +48,17 @@ No hace falta entregar junto a él DLL, skins, idiomas, archivos INI ni scripts.
 
 ## Compilar
 
-Requiere el SDK indicado en `global.json`.
+Requiere el SDK indicado en `global.json` y, para el plugin nativo, Visual Studio con la carga
+**Desktop development with C++** (MSVC x64). `build.ps1` compila el plugin y luego el launcher.
 
 ```powershell
 .\scripts\build.ps1
+```
+
+Para compilar solo el launcher (sin el plugin) usa:
+
+```powershell
+.\scripts\build.ps1 -SkipPlugin
 ```
 
 El resultado queda en:

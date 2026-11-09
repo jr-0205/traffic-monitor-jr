@@ -74,6 +74,8 @@ internal static class Program
             if (!string.IsNullOrWhiteSpace(launcherDirectory))
                 LegacyStateMigrator.TryImport(launcherDirectory, paths);
 
+            ConfigEnhancer.EnsureTaskBarPluginItem(paths);
+
             if (Process.GetProcessesByName("TrafficMonitor").Length > 0)
                 return 0;
 

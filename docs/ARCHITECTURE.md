@@ -19,6 +19,8 @@ TrafficMonitorJr.exe
    ├─ runtime/
    │  ├─ TrafficMonitor.exe
    │  ├─ DLL de hardware
+   │  ├─ plugins/
+   │  │  └─ TrafficMonitorJrIp.dll   # plugin IPv4 (C++/Win32)
    │  └─ recursos del runtime
    ├─ defaults/
    │  ├─ config.ini
@@ -37,6 +39,8 @@ El launcher instala el payload en:
 │  ├─ TrafficMonitor.exe
 │  ├─ config.ini
 │  ├─ global_cfg.ini
+│  ├─ plugins\
+│  │  └─ TrafficMonitorJrIp.dll
 │  ├─ language\
 │  ├─ skins\
 │  └─ historial generado por TrafficMonitor
@@ -54,6 +58,19 @@ Si el nuevo `TrafficMonitorJr.exe` se ejecuta desde una carpeta que contiene la 
 - `global_cfg.ini`
 - `history_traffic.dat`
 - `history_traffic.dat.bak`
+
+## Plugin de IPv4
+
+`TrafficMonitorJrIp.dll` es un plugin nativo x64 (C++/Win32, API v8 del sistema de plugins de
+TrafficMonitor) que publica un ítem de barra de tareas llamado `TMJrIPv4` con la dirección IPv4
+del adaptador seleccionado.
+
+- Se compila con `scripts/build-plugin.ps1` (MSVC) y se coloca en `payload/runtime/plugins/`.
+- En tiempo de ejecución vive en `App\plugins\` y lee `global_cfg.ini` (`portable_mode`) y
+  `config.ini` para resolver el adaptador igual que TrafficMonitor: `select_all`, `auto_select`
+  (mayor tráfico entre adaptadores operativos) o `connection_name`.
+- `ConfigEnhancer` añade `TMJrIPv4` a `[task_bar] plugin_display_item` en configuraciones
+  existentes para que el ítem aparezca sin reconfigurar.
 
 ## Comandos
 
