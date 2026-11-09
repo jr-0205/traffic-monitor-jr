@@ -1,0 +1,25 @@
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+
+# .NET
+**/bin/
+**/obj/
+
+# Build artifacts
+artifacts/
+payload/runtime/plugins/
+
+# Runtime/user state
+backups/
+error.log
+history_traffic.dat
+history_traffic.dat.bak
+*.dmp
+*.tmp
+
+# OS
+Thumbs.db
+Desktop.ini
